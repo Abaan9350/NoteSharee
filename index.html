@@ -8,10 +8,10 @@
     <div class="banner">
         <div class="navbar fade-up">
             <a href="index.html">
-            <img src="./images/logo.png" class="logo">
-                </a>
+                <img src="./images/logo.png" class="logo">
+            </a>
             <ul>
-            <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li>
                     <a href="#">NOTES
                         <i class="fas fa-caret-down"></i>
@@ -23,7 +23,7 @@
                         <li><a href="#">SEM IV</a></li>
                     </ul>
                 </li>
-                 <li>
+                <li>
                     <a href="#">PYQs
                         <i class="fas fa-caret-down"></i>
                     </a>
@@ -34,26 +34,73 @@
                         <li><a href="#">SEM IV</a></li>
                     </ul>
                 </li>
-                
-            <li><a href="about_us.html" >ABOUT US</a></li>
+                <li><a href="about_us.html">ABOUT US</a></li>
             </ul>
         </div>
         
         <div class="content">
             <h1 class="fade-down">Welcome to NoteShare.</h1>
-            <p class="fade-down">Can't find where your notes are? Or didn't make them at all? Don't worry! We got you covered :)</p>
-           
-            
+            <p id="message" class="fade-down" style="height: 1.5em;"></p>
         </div>
-   
-
         
-
+        <script>
+            // Define the messages
+            const messages = [
+                "Can't find where your notes are?",
+                "Or didn't make them at all?",
+                "Don't worry.",
+                "We got you covered.",
+                "Head over to the Notes section.",
+                "or the PYQs Section.",
+                
+                
+            ];
+        
+            // Function to display messages with typing effect
+            function displayMessage(index) {
+                const messageElement = document.getElementById('message');
+                const message = messages[index];
+                let i = 0;
+        
+                // Typing effect
+                const typingInterval = setInterval(() => {
+                    messageElement.textContent += message[i];
+                    i++;
+                    if (i === message.length) {
+                        clearInterval(typingInterval);
+        
+                        // Backspace effect
+                        setTimeout(() => {
+                            const backspaceInterval = setInterval(() => {
+                                messageElement.textContent = messageElement.textContent.slice(0, -1);
+                                if (messageElement.textContent === '') {
+                                    clearInterval(backspaceInterval);
+                                    // Display the next message after a short delay
+                                    setTimeout(() => {
+                                        if (index < messages.length - 1) {
+                                            messageElement.textContent = '';
+                                            displayMessage(index + 1);
+                                        }
+                                    }, 330);
+                                }
+                            }, 50);
+                        }, 1000); // Delay before starting backspace effect
+                    }
+                }, 70); // Typing speed
+            }
+        
+            // Start displaying messages
+            displayMessage(0);
+        </script>
     </div>
     <div class="sun-image">
         <a href="index_light.html">
-            <img src="./images/sun.png" class="sun-image"> </a>
+            <img src="./images/sun.png" class="sun-image">
+        </a>
     </div>
-
+    <!-- Levi's image -->
+    <div class="levi-image">
+        <img src="./images/Levi.jpg" alt="Levi" class="levi">
+    </div>
 </body>
 </html>
